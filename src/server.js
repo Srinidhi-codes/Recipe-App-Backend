@@ -31,6 +31,7 @@ const startServer = async () => {
     app.use(express.json());
 
     app.get("/api/health", (req, res) => {
+        console.log(`[CRON] /api/health ping received at ${new Date().toISOString()}`);
         res.status(200).json({ success: true });
     });
 
