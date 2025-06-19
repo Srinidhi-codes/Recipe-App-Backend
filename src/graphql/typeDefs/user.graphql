@@ -1,0 +1,27 @@
+type UserInfo {
+  id: String
+  email: String
+  firstName: String
+  lastName: String
+  image: String
+  color: Int
+  profileSetup: Boolean
+  theme: String
+  createdAt: String
+}
+
+input UserInput {
+  firstName: String
+  lastName: String
+  image: String
+  color: Int
+  theme: String
+}
+
+type Query {
+  getUserInfo: UserInfo!
+}
+
+type Mutation {
+  updateUserInfo(input: UserInput!): UserInfo
+}

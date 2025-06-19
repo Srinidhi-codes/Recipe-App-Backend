@@ -1,0 +1,42 @@
+type AuthResponse {
+  id: String
+  email: String
+  firstName: String
+  lastName: String
+  image: String
+  color: Int
+  profileSetup: Boolean
+  token: String!
+}
+
+type LogoutResponse {
+  message: String!
+}
+
+input AuthInput {
+  email: String!
+  password: String!
+}
+
+input ResendOtpInput {
+  email: String!
+}
+
+type MessageResponse {
+  message: String!
+}
+
+
+type Query {
+  getAuthInfo: AuthResponse
+}
+
+type Mutation {
+  initSignUp(input: AuthInput!): MessageResponse!
+  initLogin(input: AuthInput!): MessageResponse!
+  resendOtp(input: ResendOtpInput!): MessageResponse!
+  verifyOtp(email: String!, otp: String!): AuthResponse!
+  logout: LogoutResponse!
+  forgotPassword(email: String!): String!
+  resetPassword(token: String!, newPassword: String!): String!
+}

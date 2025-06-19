@@ -1,0 +1,37 @@
+input FavouriteInput {
+  userId: String!
+  recipeId: String!
+  title: String!
+  image: String!
+  cookTime: String!
+  servings: String!
+}
+
+input FavouriteDeleteInput {
+  userId: String!
+  recipeId: String!
+}
+
+input GetFavouriteInput {
+  userId: String!
+}
+
+type FavouritesResponse {
+  id: String!
+  userId: String!
+  recipeId: String!
+  title: String!
+  image: String!
+  cookTime: String!
+  servings: String!
+  createdAt: String!
+}
+
+type Query {
+  getFavourites(input: GetFavouriteInput!): [FavouritesResponse!]!
+}
+
+type Mutation {
+  addFavourite(input: FavouriteInput!): FavouritesResponse!
+  deleteFavourite(input: FavouriteDeleteInput!): String! 
+}
