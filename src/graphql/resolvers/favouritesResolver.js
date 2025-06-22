@@ -10,7 +10,7 @@ const favouritesResolver = {
                     return "No Favourites Found!";
                 }
 
-                const favourite = await prisma.favourites.findMany({
+                const favourite = await prisma.favourite.findMany({
                     where: {
                         userId,
                     }
@@ -36,7 +36,7 @@ const favouritesResolver = {
                 }
 
                 // ✅ Check if favourite already exists
-                const existing = await prisma.favourites.findFirst({
+                const existing = await prisma.favourite.findFirst({
                     where: { recipeId }
                 });
 
@@ -45,7 +45,7 @@ const favouritesResolver = {
                 }
 
                 // ✅ Create new favourite
-                const newFavourite = await prisma.favourites.create({
+                const newFavourite = await prisma.favourite.create({
                     data: {
                         userId,
                         recipeId,
@@ -69,7 +69,7 @@ const favouritesResolver = {
             try {
                 const { userId, recipeId } = input;
 
-                const deleted = await prisma.favourites.deleteMany({
+                const deleted = await prisma.favourite.deleteMany({
                     where: {
                         userId,
                         recipeId
