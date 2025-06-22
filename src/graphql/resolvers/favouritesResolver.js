@@ -67,12 +67,12 @@ const favouritesResolver = {
 
         async deleteFavourite(_, { input }) {
             try {
-                const { userId, recipeId } = input;
+                const { userId, id } = input;
 
                 const deleted = await prisma.favourite.deleteMany({
                     where: {
                         userId,
-                        recipeId
+                        id
                     }
                 });
 
